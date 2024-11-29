@@ -27,15 +27,6 @@
     "type": "expense"
   },
   {
-    "id": "4a5b6c7d-8e9f-10g11h-12i13-14j15k16l17d",
-    "title": "Salary",
-    "description": "Monthly salary credited",
-    "amount": 2500,
-    "category": "Income",
-    "date": "2024-11-28",
-    "type": "income"
-  },
-  {
     "id": "5a6b7c8d-9e10f-11g12h-13i14-15j16k17l18d",
     "title": "Electric Bill",
     "description": "Payment for electricity usage",
@@ -88,5 +79,23 @@
     "category": "Electronics",
     "date": "2024-11-29",
     "type": "expense"
+  },
+  {
+    "id": "df016609-e224-4042-a0f8-d27732915f54",
+    "title": "Atelier Masraty",
+    "description": "Website",
+    "amount": "900",
+    "category": "Freelance",
+    "date": "2024-11-17",
+    "type": "income"
+  },
+  {
+    "id": "396a5967-376a-4dbf-b7e7-60ba7da1a638",
+    "title": "Salary",
+    "description": "RWU",
+    "amount": "2500",
+    "category": "Salary",
+    "date": "2024-11-16",
+    "type": "income"
   }
 ]

@@ -3,7 +3,7 @@ import logo from '/PennyPlan_Logo.png';
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center bg-primary text-primary-content p-10">
+        <footer className="footer footer-center bg-white text-gray-800 p-10">
         <aside>
         <img src={logo} alt="Logo" className="h-10 w-10 mr-3"/>
           <p className="font-bold">
