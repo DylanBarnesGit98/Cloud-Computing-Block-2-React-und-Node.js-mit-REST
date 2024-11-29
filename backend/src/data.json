@@ -1,14 +1,5 @@
 [
   {
-    "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14m",
-    "title": "Groceries",
-    "description": "Bought some fruits and vegetables",
-    "amount": "500",
-    "category": "Foody",
-    "date": "2024-11-29",
-    "type": "income"
-  },
-  {
     "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14d",
     "title": "Groceries",
     "description": "Bought some fruits and vegetables",
@@ -41,15 +32,6 @@
     "date": "2024-11-08"
   },
   {
-    "id": "1a3b3c4d-5e6f-7g8h-9i10-11j12k13l14c",
-    "title": "Drugs",
-    "description": "cash",
-    "amount": "2000000000",
-    "category": "Drugs",
-    "date": "2024-11-14",
-    "type": "expense"
-  },
-  {
     "id": "5b5bf755-3a98-441b-aafa-a5ba7d5231bb",
     "title": "Drugs",
     "description": "A lot of em",
@@ -57,5 +39,32 @@
     "category": "Sauce",
     "date": "2024-10-18",
     "type": "income"
+  },
+  {
+    "id": "",
+    "title": "ttt",
+    "description": "tgsr",
+    "amount": "45",
+    "category": "test",
+    "date": "2024-11-07",
+    "type": "expense"
+  },
+  {
+    "id": "",
+    "title": "ttt",
+    "description": "tgsr",
+    "amount": "45",
+    "category": "test",
+    "date": "2024-11-07",
+    "type": "income"
+  },
+  {
+    "id": "",
+    "title": "Drugs again",
+    "description": "oopsie",
+    "amount": "440000033.99",
+    "category": "Drugs",
+    "date": "2024-12-05",
+    "type": "expense"
   }
 ]

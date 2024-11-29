@@ -154,9 +154,35 @@ const ExpenseManager = () => {
               {isModalOpen && (
                   <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
                       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-                          <h3 className="font-bold text-lg mb-4">
-                              {newExpense.id ? 'Edit Expense' : 'Add a New Expense'}
-                          </h3>
+                      <h3 className="font-bold text-lg mb-4">
+                        {newExpense.type === "expense"
+                        ? "Add a New Expense"
+                        : "Add a New Income"}
+                    </h3>
+                    {/* Toggle for expense/income */}
+                    <div className="form-control mb-4">
+                                <label className="label">
+                                <span className="label-text"></span>
+                                </label>
+                                <div className="flex items-center">
+                                <span className="mr-2">Expense</span>
+                                <label className="relative inline-flex items-center cursor-pointer">
+                                    <input
+                                    type="checkbox"
+                                    checked={newExpense.type === "income"}
+                                    onChange={handleToggleChange}
+                                    className="sr-only peer"
+                                    />
+                                    <div
+                                    className="w-11 h-6 rounded-full transition duration-300 peer bg-red-500 peer-checked:bg-green-500 peer-focus:ring-4 peer-focus:ring-red-300 peer-checked:peer-focus:ring-green-300"
+                                    ></div>
+                                    <div
+                                    className="absolute left-[2px] top-[2px] bg-white w-5 h-5 rounded-full shadow-md transition-all peer-checked:translate-x-5 peer-checked:left-auto"
+                                    ></div>
+                                </label>
+                                <span className="ml-2">Income</span>
+                                </div>
+                            </div>
                           <form onSubmit={handleFormSubmit}>
                               <div className="form-control mb-4">
                                   <label className="label">
@@ -167,7 +193,7 @@ const ExpenseManager = () => {
                                       name="title"
                                       value={newExpense.title}
                                       onChange={handleInputChange}
-                                      className="input input-bordered w-full"
+                                      className="input input-bordered w-full bg-gray-200"
                                       required />
                               </div>
                               <div className="form-control mb-4">
@@ -178,7 +204,7 @@ const ExpenseManager = () => {
                                       name="description"
                                       value={newExpense.description}
                                       onChange={handleInputChange}
-                                      className="textarea textarea-bordered w-full"
+                                      className="textarea textarea-bordered w-full bg-gray-200"
                                       required
                                   ></textarea>
                               </div>
@@ -191,7 +217,7 @@ const ExpenseManager = () => {
                                       name="amount"
                                       value={newExpense.amount}
                                       onChange={handleInputChange}
-                                      className="input input-bordered w-full"
+                                      className="input input-bordered w-full bg-gray-200"
                                       required />
                               </div>
                               <div className="form-control mb-4">
@@ -203,7 +229,7 @@ const ExpenseManager = () => {
                                       name="category"
                                       value={newExpense.category}
                                       onChange={handleInputChange}
-                                      className="input input-bordered w-full"
+                                      className="input input-bordered w-full bg-gray-200"
                                       required />
                               </div>
                               <div className="form-control mb-4">
@@ -215,26 +241,9 @@ const ExpenseManager = () => {
                                       name="date"
                                       value={newExpense.date}
                                       onChange={handleInputChange}
-                                      className="input input-bordered w-full"
+                                      className="input input-bordered w-full bg-gray-200"
                                       required />
                               </div>
-
-                              {/* Toggle for expense/income */}
-                              <div className="form-control mb-4">
-                                  <label className="label">
-                                      <span className="label-text">Type</span>
-                                  </label>
-                                  <div className="flex items-center">
-                                      <label className="label-text mr-2">Expense</label>
-                                      <input
-                                          type="checkbox"
-                                          checked={newExpense.type === 'income'}
-                                          onChange={handleToggleChange}
-                                          className="toggle" />
-                                      <label className="label-text ml-2">Income</label>
-                                  </div>
-                              </div>
-
                               <div className="modal-action">
                                   <button type="button" className="btn" onClick={closeModal}>
                                       Cancel
