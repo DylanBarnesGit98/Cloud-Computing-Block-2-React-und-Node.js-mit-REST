@@ -260,7 +260,7 @@ const ExpenseManager = () => {
                                       required />
                               </div>
                               <div className="modal-action">
-                                  <button type="button" className="btn" onClick={closeModal}>
+                                  <button type="button" className="btn btn-primary mr-8" style={{ marginRight: '24px' }} onClick={closeModal}>
                                       Cancel
                                   </button>
                                   <button type="submit" className="btn btn-primary">
