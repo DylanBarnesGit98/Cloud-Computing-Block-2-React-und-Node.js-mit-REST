@@ -1,38 +1,20 @@
 [
   {
-    "id": "3d418fc4-e5bd-424e-9607-725124d5a4ab",
-    "title": "Feiern gehen",
-    "description": "Fridas, Mensaparty und Kantine",
-    "amount": "70",
-    "category": "Freizeit",
-    "date": "2024-11-20",
-    "type": "expense"
-  },
-  {
-    "id": "c0e2b521-e09d-4e62-b3ec-f591ee6f860c",
-    "title": "Ravensburger AG",
-    "description": "Gehalt November",
-    "amount": "2475",
-    "category": "Gehalt",
+    "id": "911aa6d7-a099-42f6-926b-8ccfe9ab2844",
+    "title": "Parents",
+    "description": "-",
+    "amount": "1000",
+    "category": "Salary",
     "date": "2024-11-29",
     "type": "income"
   },
   {
-    "id": "c51ea237-5ebf-4c46-9387-efc4e9342dd4",
+    "id": "5bd7c9a8-fdca-45ea-a347-2ffb031dbafc",
     "title": "Spotify",
-    "description": "November",
+    "description": "-",
     "amount": "9.99",
-    "category": "Abonnements",
+    "category": "Entertainment",
     "date": "2024-11-29",
     "type": "expense"
-  },
-  {
-    "id": "a50f782d-35d0-4977-adc9-d9ce83ff56fd",
-    "title": "Kindergeld",
-    "description": "Hannah und Luca",
-    "amount": "500",
-    "category": "Staat",
-    "date": "2024-11-13",
-    "type": "income"
   }
 ]

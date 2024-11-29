@@ -15,6 +15,10 @@ const ExpenseManager = () => {
     type: 'expense', // Default type is 'expense'
   });
 
+  // Vordefinierte Kategorien
+  const expenseCategories = ['Food', 'Transportation', 'Rent', 'Utilities', 'Entertainment'];
+  const incomeCategories = ['Salary', 'Freelance', 'Investments', 'Gifts'];
+
   // Fetch expenses from the backend
   useEffect(() => {
     fetch('http://localhost:2000/data')
@@ -221,17 +225,28 @@ const ExpenseManager = () => {
                                       required />
                               </div>
                               <div className="form-control mb-4">
-                                  <label className="label">
-                                      <span className="label-text">Category</span>
-                                  </label>
-                                  <input
-                                      type="text"
-                                      name="category"
-                                      value={newExpense.category}
-                                      onChange={handleInputChange}
-                                      className="input input-bordered w-full bg-gray-200"
-                                      required />
-                              </div>
+                  <label className="label">
+                    <span className="label-text">Category</span>
+                  </label>
+                  <select
+                    name="category"
+                    value={newExpense.category}
+                    onChange={handleInputChange}
+                    className="select select-bordered w-full"
+                    required
+                  >
+                    <option value="" disabled>
+                      Select a category
+                    </option>
+                    {(newExpense.type === 'expense' ? expenseCategories : incomeCategories).map(
+                      (category) => (
+                        <option key={category} value={category}>
+                          {category}
+                        </option>
+                      )
+                    )}
+                  </select>
+                </div>
                               <div className="form-control mb-4">
                                   <label className="label">
                                       <span className="label-text">Date</span>
