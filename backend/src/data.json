@@ -1,45 +1,58 @@
 [
-    {
-      "title": "Groceries",
-      "description": "Bought some fruits and vegetables",
-      "amount": 50,
-      "category": "Food",
-      "date": "2024-11-29"
-    },
-    {
-        "title": "Groceries",
-        "description": "Bought some fruits and vegetables",
-        "amount": 50,
-        "category": "Food",
-        "date": "2024-11-29"
-      },
-      {
-        "title": "Groceries",
-        "description": "Bought some fruits and vegetables",
-        "amount": 50,
-        "category": "Food",
-        "date": "2024-11-29"
-      },
-      {
-        "title": "Groceries",
-        "description": "Bought some fruits and vegetables",
-        "amount": 50,
-        "category": "Food",
-        "date": "2024-11-29"
-      },
-      {
-        "title": "Groceries",
-        "description": "Bought some fruits and vegetables",
-        "amount": 50,
-        "category": "Food",
-        "date": "2024-11-29"
-      },
-      {
-        "title": "Groceries",
-        "description": "Bought some fruits and vegetables",
-        "amount": 50,
-        "category": "Food",
-        "date": "2024-11-29"
-      }
-  ]
-  
+  {
+    "title": "Groceries",
+    "description": "Bought some fruits and vegetables",
+    "amount": 50,
+    "category": "Food",
+    "date": "2024-11-29"
+  },
+  {
+    "title": "Groceries",
+    "description": "Bought some fruits and vegetables",
+    "amount": 50,
+    "category": "Food",
+    "date": "2024-11-29"
+  },
+  {
+    "title": "Groceries",
+    "description": "Bought some fruits and vegetables",
+    "amount": 50,
+    "category": "Food",
+    "date": "2024-11-29"
+  },
+  {
+    "title": "Groceries",
+    "description": "Bought some fruits and vegetables",
+    "amount": 50,
+    "category": "Food",
+    "date": "2024-11-29"
+  },
+  {
+    "title": "Groceries",
+    "description": "Bought some fruits and vegetables",
+    "amount": 50,
+    "category": "Food",
+    "date": "2024-11-29"
+  },
+  {
+    "title": "Groceries",
+    "description": "Bought some fruits and vegetables",
+    "amount": 50,
+    "category": "Food",
+    "date": "2024-11-29"
+  },
+  {
+    "title": "Big Money go getter",
+    "description": "Lotta money",
+    "amount": "20000",
+    "category": "Groceries",
+    "date": "2024-11-08"
+  },
+  {
+    "title": "Drugs",
+    "description": "cash",
+    "amount": "2000000000",
+    "category": "Drugs",
+    "date": "2024-11-14"
+  }
+]

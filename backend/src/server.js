@@ -20,7 +20,7 @@ const readExpenses = () => {
     return JSON.parse(data);
   } catch (err) {
     console.error("Error reading data.json:", err);
-    return []; // Return an empty array if file doesn't exist or is invalid
+    return [];
   }
 };
 
@@ -42,11 +42,11 @@ app.get("/data", (req, res) => {
 // POST endpoint to add an expense
 app.post("/data", (req, res) => {
   const newExpense = req.body; // { title, description, amount, category, date }
-  expenses.push(newExpense);
-  fs.writeFileSync(dataPath, JSON.stringify(expenses, null, 2)); // Save to data.json
+  const expenses = readExpenses(); // Load existing expenses
+  expenses.push(newExpense); // Add new expense
+  writeExpenses(expenses); // Save updated expenses
   res.status(201).json(newExpense);
 });
-
 
 // Start the server
 app.listen(PORT, () => {

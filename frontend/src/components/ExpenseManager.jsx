@@ -54,13 +54,21 @@ const ExpenseManager = () => {
       .catch((error) => console.error('Error adding expense:', error));
   };
 
+  // Calculate total balance
+  const totalBalance = expenses.reduce((total, expense) => total + parseFloat(expense.amount || 0), 0);
+
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">Expense Manager</h1>
 
+      {/* Total Balance */}
+      <div className="mb-4 p-4 bg-white shadow rounded-lg">
+        <h2 className="text-xl font-bold">Total Balance: ${totalBalance.toFixed(2)}</h2>
+      </div>
+
       {/* Button to open modal */}
       <button className="btn btn-primary mb-4" onClick={openModal}>
-        Add Expense
+        Add an Expense or Income
       </button>
 
       {/* Modal */}
@@ -146,12 +154,12 @@ const ExpenseManager = () => {
         </div>
       )}
 
-  {/* Expense List */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {expenses.map((expense, index) => (
-        <ExpenseListEntry key={index} expense={expense} />
-    ))}
-    </div>
+      {/* Expense List */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {expenses.map((expense, index) => (
+          <ExpenseListEntry key={index} expense={expense} />
+        ))}
+      </div>
     </div>
   );
 };
