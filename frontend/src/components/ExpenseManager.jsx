@@ -6,7 +6,7 @@ const ExpenseManager = () => {
   const [expenses, setExpenses] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newExpense, setNewExpense] = useState({
-    id: '', // Add id to manage edit functionality
+    //id: '', // Add id to manage edit functionality
     title: '',
     description: '',
     amount: '',
@@ -28,7 +28,7 @@ const ExpenseManager = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setNewExpense({
-      id: '', // Reset id for new expenses
+      //id: '', // Reset id for new expenses
       title: '',
       description: '',
       amount: '',

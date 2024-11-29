@@ -1,47 +1,6 @@
 [
   {
-    "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14d",
-    "title": "Groceries",
-    "description": "Bought some fruits and vegetables",
-    "amount": 50,
-    "category": "Food",
-    "date": "2024-11-29"
-  },
-  {
-    "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14c",
-    "title": "Groceries",
-    "description": "Bought some fruits and vegetables",
-    "amount": 50,
-    "category": "Food",
-    "date": "2024-11-29"
-  },
-  {
-    "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14g",
-    "title": "Groceries",
-    "description": "Bought some fruits and vegetables",
-    "amount": 50,
-    "category": "Food",
-    "date": "2024-11-29"
-  },
-  {
-    "id": "1a2d3c4d-5e6f-7g8h-9i10-11j12k13l14c",
-    "title": "Big Money go getter",
-    "description": "Lotta money",
-    "amount": "20000",
-    "category": "Groceries",
-    "date": "2024-11-08"
-  },
-  {
-    "id": "5b5bf755-3a98-441b-aafa-a5ba7d5231bb",
-    "title": "Drugs",
-    "description": "A lot of em",
-    "amount": "200000",
-    "category": "Sauce",
-    "date": "2024-10-18",
-    "type": "income"
-  },
-  {
-    "id": "",
+    "id": "3d418fc4-e5bd-424e-9607-725124d5a4ab",
     "title": "ttt",
     "description": "tgsr",
     "amount": "45",
@@ -50,21 +9,12 @@
     "type": "expense"
   },
   {
-    "id": "",
-    "title": "ttt",
-    "description": "tgsr",
-    "amount": "45",
-    "category": "test",
-    "date": "2024-11-07",
+    "id": "c0e2b521-e09d-4e62-b3ec-f591ee6f860c",
+    "title": "Ravensburger AG",
+    "description": "Gehalt November",
+    "amount": "2475",
+    "category": "Gehalt",
+    "date": "2024-11-29",
     "type": "income"
-  },
-  {
-    "id": "",
-    "title": "Drugs again",
-    "description": "oopsie",
-    "amount": "440000033.99",
-    "category": "Drugs",
-    "date": "2024-12-05",
-    "type": "expense"
   }
 ]
