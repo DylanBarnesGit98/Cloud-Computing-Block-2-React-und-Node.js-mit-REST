@@ -1,11 +1,11 @@
 [
   {
     "id": "3d418fc4-e5bd-424e-9607-725124d5a4ab",
-    "title": "ttt",
-    "description": "tgsr",
-    "amount": "45",
-    "category": "test",
-    "date": "2024-11-07",
+    "title": "Feiern gehen",
+    "description": "Fridas, Mensaparty und Kantine",
+    "amount": "70",
+    "category": "Freizeit",
+    "date": "2024-11-20",
     "type": "expense"
   },
   {
@@ -15,6 +15,24 @@
     "amount": "2475",
     "category": "Gehalt",
     "date": "2024-11-29",
+    "type": "income"
+  },
+  {
+    "id": "c51ea237-5ebf-4c46-9387-efc4e9342dd4",
+    "title": "Spotify",
+    "description": "November",
+    "amount": "9.99",
+    "category": "Abonnements",
+    "date": "2024-11-29",
+    "type": "expense"
+  },
+  {
+    "id": "a50f782d-35d0-4977-adc9-d9ce83ff56fd",
+    "title": "Kindergeld",
+    "description": "Hannah und Luca",
+    "amount": "500",
+    "category": "Staat",
+    "date": "2024-11-13",
     "type": "income"
   }
 ]
