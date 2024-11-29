@@ -34,10 +34,15 @@ const ExpenseManager = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    const newExpenseToSave = {
+      ...newExpense,
+      amount: parseFloat(newExpense.amount), // Ensure amount is a number
+    };
+
     fetch('http://localhost:2000/data', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newExpense),
+      body: JSON.stringify(newExpenseToSave),
     })
       .then((response) => response.json())
       .then((addedExpense) => {
@@ -48,8 +53,8 @@ const ExpenseManager = () => {
           amount: '',
           category: '',
           date: '',
-        }); // Reset form
-        closeModal(); // Close modal
+        });
+        closeModal();
       })
       .catch((error) => console.error('Error adding expense:', error));
   };
@@ -57,13 +62,27 @@ const ExpenseManager = () => {
   // Calculate total balance
   const totalBalance = expenses.reduce((total, expense) => total + parseFloat(expense.amount || 0), 0);
 
+  // Format total balance with commas or dots
+  const formattedBalance = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(totalBalance);
+
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">Expense Manager</h1>
 
       {/* Total Balance */}
-      <div className="mb-4 p-4 bg-white shadow rounded-lg">
-        <h2 className="text-xl font-bold">Total Balance: ${totalBalance.toFixed(2)}</h2>
+      <div
+        className={`mb-4 p-4 shadow rounded-lg ${
+          totalBalance >= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+        }`}
+      >
+        <h2 className="text-xl font-bold">
+          Total Balance: {formattedBalance}
+        </h2>
       </div>
 
       {/* Button to open modal */}
