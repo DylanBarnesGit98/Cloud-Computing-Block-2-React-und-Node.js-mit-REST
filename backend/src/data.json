@@ -1,20 +1,92 @@
 [
   {
-    "id": "3d418fc4-e5bd-424e-9607-725124d5a4ab",
-    "title": "ttt",
-    "description": "tgsr",
-    "amount": "45",
-    "category": "test",
-    "date": "2024-11-07",
+    "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14d",
+    "title": "Groceries",
+    "description": "Bought fruits and vegetables for the week",
+    "amount": "43.66",
+    "category": "Food",
+    "date": "2024-11-15",
     "type": "expense"
   },
   {
-    "id": "c0e2b521-e09d-4e62-b3ec-f591ee6f860c",
-    "title": "Ravensburger AG",
-    "description": "Gehalt November",
-    "amount": "2475",
-    "category": "Gehalt",
-    "date": "2024-11-29",
+    "id": "2a3b4c5d-6e7f-8g9h-10i11-12j13k14l15d",
+    "title": "Gasoline",
+    "description": "Filled up the car's tank",
+    "amount": "68.02",
+    "category": "Transportation",
+    "date": "2024-11-19",
+    "type": "expense"
+  },
+  {
+    "id": "3a4b5c6d-7e8f-9g10h-11i12-13j14k15l16d",
+    "title": "Movie Night",
+    "description": "Watched a new blockbuster with snacks",
+    "amount": "27.78",
+    "category": "Entertainment",
+    "date": "2024-11-22",
+    "type": "expense"
+  },
+  {
+    "id": "4a5b6c7d-8e9f-10g11h-12i13-14j15k16l17d",
+    "title": "Salary",
+    "description": "Monthly salary credited",
+    "amount": 2500,
+    "category": "Income",
+    "date": "2024-11-28",
     "type": "income"
+  },
+  {
+    "id": "5a6b7c8d-9e10f-11g12h-13i14-15j16k17l18d",
+    "title": "Electric Bill",
+    "description": "Payment for electricity usage",
+    "amount": "125.34",
+    "category": "Utilities",
+    "date": "2024-11-10",
+    "type": "expense"
+  },
+  {
+    "id": "6a7b8c9d-10e11f-12g13h-14i15-16j17k18l19d",
+    "title": "Gym Membership",
+    "description": "Monthly gym subscription",
+    "amount": 45,
+    "category": "Health",
+    "date": "2024-11-01",
+    "type": "expense"
+  },
+  {
+    "id": "7a8b9c10d-11e12f-13g14h-15i16-17j18k19l20d",
+    "title": "Birthday Gift",
+    "description": "Bought a watch as a birthday present",
+    "amount": 120,
+    "category": "Gifts",
+    "date": "2024-11-16",
+    "type": "expense"
+  },
+  {
+    "id": "8a9b10c11d-12e13f-14g15h-16i17-18j19k20l21d",
+    "title": "Dining Out",
+    "description": "Dinner at an Italian restaurant",
+    "amount": 58,
+    "category": "Food",
+    "date": "2024-11-25",
+    "type": "expense"
+  },
+  {
+    "id": "10a11b12c13d-14e15f-16g17h-18i19-20j21k22l23d",
+    "title": "Freelance Work",
+    "description": "Payment received for a side project",
+    "amount": "303",
+    "category": "Income",
+    "date": "2024-11-18",
+    "type": "income"
+  },
+  {
+    "id": "11a12b13c14d-15e16f-17g18h-19i20-21j22k23l24d",
+    "title": "Premium Phone",
+    "description": "Bought a premium smartphone with cutting-edge features",
+    "amount": "1200.99",
+    "category": "Electronics",
+    "date": "2024-11-29",
+    "type": "expense"
   }
 ]
