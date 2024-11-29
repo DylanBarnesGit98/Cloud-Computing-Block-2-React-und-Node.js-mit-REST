@@ -1,5 +1,15 @@
 [
   {
+    "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14m",
+    "title": "Groceries",
+    "description": "Bought some fruits and vegetables",
+    "amount": "500",
+    "category": "Foody",
+    "date": "2024-11-29",
+    "type": "income"
+  },
+  {
+    "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14d",
     "title": "Groceries",
     "description": "Bought some fruits and vegetables",
     "amount": 50,
@@ -7,6 +17,7 @@
     "date": "2024-11-29"
   },
   {
+    "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14c",
     "title": "Groceries",
     "description": "Bought some fruits and vegetables",
     "amount": 50,
@@ -14,6 +25,7 @@
     "date": "2024-11-29"
   },
   {
+    "id": "1a2b3c4d-5e6f-7g8h-9i10-11j12k13l14g",
     "title": "Groceries",
     "description": "Bought some fruits and vegetables",
     "amount": 50,
@@ -21,27 +33,7 @@
     "date": "2024-11-29"
   },
   {
-    "title": "Groceries",
-    "description": "Bought some fruits and vegetables",
-    "amount": 50,
-    "category": "Food",
-    "date": "2024-11-29"
-  },
-  {
-    "title": "Groceries",
-    "description": "Bought some fruits and vegetables",
-    "amount": 50,
-    "category": "Food",
-    "date": "2024-11-29"
-  },
-  {
-    "title": "Groceries",
-    "description": "Bought some fruits and vegetables",
-    "amount": 50,
-    "category": "Food",
-    "date": "2024-11-29"
-  },
-  {
+    "id": "1a2d3c4d-5e6f-7g8h-9i10-11j12k13l14c",
     "title": "Big Money go getter",
     "description": "Lotta money",
     "amount": "20000",
@@ -49,6 +41,7 @@
     "date": "2024-11-08"
   },
   {
+    "id": "1a3b3c4d-5e6f-7g8h-9i10-11j12k13l14c",
     "title": "Drugs",
     "description": "cash",
     "amount": "2000000000",
@@ -57,35 +50,12 @@
     "type": "expense"
   },
   {
-    "title": "this is a test",
-    "description": "ttt",
-    "amount": "30",
-    "category": "truckms",
-    "date": "2024-11-29",
-    "type": "income"
-  },
-  {
-    "title": "ggg",
-    "description": "ggg",
-    "amount": "600",
-    "category": "csdguntr",
-    "date": "2024-11-01",
-    "type": "expense"
-  },
-  {
-    "title": "test",
-    "description": "tetasg",
-    "amount": "69420",
-    "category": "Bigg anti Stonkss",
-    "date": "2024-11-20",
-    "type": "expense"
-  },
-  {
-    "title": "gggg",
-    "description": "dfghdrg",
-    "amount": "666",
-    "category": "devils bussssniss",
-    "date": "2024-11-06",
+    "id": "5b5bf755-3a98-441b-aafa-a5ba7d5231bb",
+    "title": "Drugs",
+    "description": "A lot of em",
+    "amount": "200000",
+    "category": "Sauce",
+    "date": "2024-10-18",
     "type": "income"
   }
 ]

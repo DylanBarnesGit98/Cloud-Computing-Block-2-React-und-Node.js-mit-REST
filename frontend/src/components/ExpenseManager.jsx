@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import ExpenseListEntry from './ExpenseListEntry';
 import Navbar from './Navbar';
 
 const ExpenseManager = () => {
   const [expenses, setExpenses] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newExpense, setNewExpense] = useState({
+    id: '', // Add id to manage edit functionality
     title: '',
     description: '',
     amount: '',
@@ -24,7 +24,18 @@ const ExpenseManager = () => {
 
   // Handle modal open/close
   const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setNewExpense({
+      id: '', // Reset id for new expenses
+      title: '',
+      description: '',
+      amount: '',
+      category: '',
+      date: '',
+      type: 'expense', // Default to expense type
+    });
+  };
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -40,38 +51,51 @@ const ExpenseManager = () => {
     }));
   };
 
-  // Handle form submission
+  // Handle form submission (both for adding and editing expenses)
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:2000/data', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newExpense),
-    })
-      .then((response) => response.json())
-      .then((addedExpense) => {
-        setExpenses((prev) => [...prev, addedExpense]);
-        setNewExpense({
-          title: '',
-          description: '',
-          amount: '',
-          category: '',
-          date: '',
-          type: 'expense', // Reset to 'expense' by default
-        }); // Reset form
-        closeModal(); // Close modal
+    if (newExpense.id) {
+      // Editing an existing expense
+      fetch(`http://localhost:2000/data/${newExpense.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newExpense),
       })
-      .catch((error) => console.error('Error adding expense:', error));
+        .then((response) => response.json())
+        .then((updatedExpense) => {
+          setExpenses((prev) =>
+            prev.map((expense) =>
+              expense.id === updatedExpense.id ? updatedExpense : expense
+            )
+          );
+          closeModal(); // Close modal after updating
+        })
+        .catch((error) => console.error('Error updating expense:', error));
+    } else {
+      // Adding a new expense
+      fetch('http://localhost:2000/data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newExpense),
+      })
+        .then((response) => response.json())
+        .then((addedExpense) => {
+          setExpenses((prev) => [...prev, addedExpense]);
+          closeModal(); // Close modal after adding
+        })
+        .catch((error) => console.error('Error adding expense:', error));
+    }
   };
 
-  // Format amount based on type
+  // Format amount with thousands separator, decimal points, and '-' for expenses
   const formatAmount = (amount, type) => {
-    const formattedAmount = parseFloat(amount).toFixed(2);
-    if (type === 'expense') {
-      return `- $${formattedAmount}`; // Add a negative sign for expense
-    }
-    return `$${formattedAmount}`; // For income, show the amount as is
+    const formattedAmount = new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(Math.abs(amount));
+
+    return type === 'expense' ? `- $${formattedAmount}` : `$${formattedAmount}`;
   };
 
   // Calculate total balance
@@ -83,6 +107,28 @@ const ExpenseManager = () => {
     }
   }, 0);
 
+  // Format total balance
+  const formattedBalance = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+  }).format(totalBalance);
+
+  // Handle delete action
+  const handleDelete = (id) => {
+    fetch(`http://localhost:2000/data/${id}`, { method: 'DELETE' })
+      .then(() => {
+        setExpenses((prev) => prev.filter((expense) => expense.id !== id));
+      })
+      .catch((error) => console.error('Error deleting expense:', error));
+  };
+
+  // Handle edit action
+  const handleEdit = (expense) => {
+    setNewExpense(expense);
+    openModal();
+  };
+
   return (
     <div>
       {/* Navbar Component */}
@@ -92,8 +138,12 @@ const ExpenseManager = () => {
         <h1 className="text-2xl font-bold mb-4">Expense Manager</h1>
 
         {/* Total Balance */}
-        <div className="mb-4 p-4 bg-white shadow rounded-lg">
-          <h2 className="text-xl font-bold">Total Balance: ${totalBalance.toFixed(2)}</h2>
+        <div
+          className={`mb-4 p-4 shadow rounded-lg ${
+            totalBalance >= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+          }`}
+        >
+          <h2 className="text-xl font-bold">Total Balance: {formattedBalance}</h2>
         </div>
 
         {/* Button to open modal */}
@@ -105,7 +155,9 @@ const ExpenseManager = () => {
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-              <h3 className="font-bold text-lg mb-4">Add a New Expense</h3>
+              <h3 className="font-bold text-lg mb-4">
+                {newExpense.id ? 'Edit Expense' : 'Add a New Expense'}
+              </h3>
               <form onSubmit={handleFormSubmit}>
                 <div className="form-control mb-4">
                   <label className="label">
@@ -194,7 +246,7 @@ const ExpenseManager = () => {
                     Cancel
                   </button>
                   <button type="submit" className="btn btn-primary">
-                    Add {newExpense.type.charAt(0).toUpperCase() + newExpense.type.slice(1)}
+                    {newExpense.id ? 'Update Expense' : 'Add Expense'}
                   </button>
                 </div>
               </form>
@@ -204,8 +256,8 @@ const ExpenseManager = () => {
 
         {/* Expense List */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {expenses.map((expense, index) => (
-            <div key={index} className="p-4 bg-white shadow rounded-lg">
+          {expenses.map((expense) => (
+            <div key={expense.id} className="p-4 bg-white shadow rounded-lg">
               <h3 className="font-bold text-lg">{expense.title}</h3>
               <p className="text-sm text-gray-600">{expense.description}</p>
               <p className="text-sm text-gray-500">Category: {expense.category}</p>
@@ -214,7 +266,23 @@ const ExpenseManager = () => {
                 className={`text-xl font-bold ${expense.type === 'expense' ? 'text-red-600' : 'text-green-600'}`}
               >
                 {formatAmount(expense.amount, expense.type)}
-              </p>
+             </p>
+
+              {/* Edit and Delete Buttons */}
+              <div className="mt-2 flex space-x-2">
+                <button
+                  className="btn btn-sm btn-outline btn-primary"
+                  onClick={() => handleEdit(expense)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn btn-sm btn-outline btn-danger"
+                  onClick={() => handleDelete(expense.id)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>

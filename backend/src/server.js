@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
+const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 const PORT = 2000;
@@ -41,11 +42,45 @@ app.get("/data", (req, res) => {
 
 // POST endpoint to add an expense
 app.post("/data", (req, res) => {
-  const newExpense = req.body; // { title, description, amount, category, date }
-  const expenses = readExpenses(); // Load existing expenses
-  expenses.push(newExpense); // Add new expense
-  writeExpenses(expenses); // Save updated expenses
+  const newExpense = {
+    id: uuidv4(),
+    ...req.body,
+  };
+
+  const expenses = readExpenses();
+  expenses.push(newExpense);
+  writeExpenses(expenses);
   res.status(201).json(newExpense);
+});
+
+// PUT endpoint to update an existing expense
+app.put("/data/:id", (req, res) => {
+  const { id } = req.params;
+  const updatedExpense = req.body;
+  const expenses = readExpenses();
+
+  const expenseIndex = expenses.findIndex((expense) => expense.id === id);
+  if (expenseIndex !== -1) {
+    expenses[expenseIndex] = { ...expenses[expenseIndex], ...updatedExpense };
+    writeExpenses(expenses);
+    res.json(expenses[expenseIndex]);
+  } else {
+    res.status(404).json({ error: "Expense not found" });
+  }
+});
+
+// DELETE endpoint to remove an expense
+app.delete("/data/:id", (req, res) => {
+  const { id } = req.params;
+  let expenses = readExpenses();
+
+  // Remove the expense with the given id
+  expenses = expenses.filter((expense) => expense.id !== id);
+
+  // Write the updated expenses back to the file
+  writeExpenses(expenses);
+
+  res.status(200).json({ message: `Expense with id ${id} deleted successfully` });
 });
 
 // Start the server
