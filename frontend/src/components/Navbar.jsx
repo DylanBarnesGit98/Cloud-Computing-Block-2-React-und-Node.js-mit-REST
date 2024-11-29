@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '/PennyPlan_Logo.png'; // Adjust the path according to your file structure
+import logo from '/PennyPlan_Logo.png';
 
 const Navbar = () => {
   return (
@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
-          <img src={logo} alt="Logo" className="h-10 w-10 mr-3" /> {/* Adjust height and width as needed */}
+          <img src={logo} alt="Logo" className="h-10 w-10 mr-3"/>
           <h1 className="text-white text-2xl">PennyPlan</h1>
         </div>
         {/* Links */}

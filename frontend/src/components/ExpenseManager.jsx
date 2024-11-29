@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 const ExpenseManager = () => {
   const [expenses, setExpenses] = useState([]);
@@ -130,164 +131,157 @@ const ExpenseManager = () => {
   };
 
   return (
-    <div>
-      {/* Navbar Component */}
-      <Navbar />
+    <><div>
+          {/* Navbar Component */}
+          <Navbar />
 
-      <div className="p-6 bg-gray-100 min-h-screen">
-        <h1 className="text-2xl font-bold mb-4">Expense Manager</h1>
+          <div className="p-6 bg-gray-100 min-h-screen">
+              <h1 className="text-2xl font-bold mb-4">Expense Manager</h1>
 
-        {/* Total Balance */}
-        <div
-          className={`mb-4 p-4 shadow rounded-lg ${
-            totalBalance >= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-          }`}
-        >
-          <h2 className="text-xl font-bold">Total Balance: {formattedBalance}</h2>
-        </div>
-
-        {/* Button to open modal */}
-        <button className="btn btn-primary mb-4" onClick={openModal}>
-          Add an Expense or Income
-        </button>
-
-        {/* Modal */}
-        {isModalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-              <h3 className="font-bold text-lg mb-4">
-                {newExpense.id ? 'Edit Expense' : 'Add a New Expense'}
-              </h3>
-              <form onSubmit={handleFormSubmit}>
-                <div className="form-control mb-4">
-                  <label className="label">
-                    <span className="label-text">Title</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="title"
-                    value={newExpense.title}
-                    onChange={handleInputChange}
-                    className="input input-bordered w-full"
-                    required
-                  />
-                </div>
-                <div className="form-control mb-4">
-                  <label className="label">
-                    <span className="label-text">Description</span>
-                  </label>
-                  <textarea
-                    name="description"
-                    value={newExpense.description}
-                    onChange={handleInputChange}
-                    className="textarea textarea-bordered w-full"
-                    required
-                  ></textarea>
-                </div>
-                <div className="form-control mb-4">
-                  <label className="label">
-                    <span className="label-text">Amount</span>
-                  </label>
-                  <input
-                    type="number"
-                    name="amount"
-                    value={newExpense.amount}
-                    onChange={handleInputChange}
-                    className="input input-bordered w-full"
-                    required
-                  />
-                </div>
-                <div className="form-control mb-4">
-                  <label className="label">
-                    <span className="label-text">Category</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="category"
-                    value={newExpense.category}
-                    onChange={handleInputChange}
-                    className="input input-bordered w-full"
-                    required
-                  />
-                </div>
-                <div className="form-control mb-4">
-                  <label className="label">
-                    <span className="label-text">Date</span>
-                  </label>
-                  <input
-                    type="date"
-                    name="date"
-                    value={newExpense.date}
-                    onChange={handleInputChange}
-                    className="input input-bordered w-full"
-                    required
-                  />
-                </div>
-
-                {/* Toggle for expense/income */}
-                <div className="form-control mb-4">
-                  <label className="label">
-                    <span className="label-text">Type</span>
-                  </label>
-                  <div className="flex items-center">
-                    <label className="label-text mr-2">Expense</label>
-                    <input
-                      type="checkbox"
-                      checked={newExpense.type === 'income'}
-                      onChange={handleToggleChange}
-                      className="toggle"
-                    />
-                    <label className="label-text ml-2">Income</label>
-                  </div>
-                </div>
-
-                <div className="modal-action">
-                  <button type="button" className="btn" onClick={closeModal}>
-                    Cancel
-                  </button>
-                  <button type="submit" className="btn btn-primary">
-                    {newExpense.id ? 'Update Expense' : 'Add Expense'}
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
-
-        {/* Expense List */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {expenses.map((expense) => (
-            <div key={expense.id} className="p-4 bg-white shadow rounded-lg">
-              <h3 className="font-bold text-lg">{expense.title}</h3>
-              <p className="text-sm text-gray-600">{expense.description}</p>
-              <p className="text-sm text-gray-500">Category: {expense.category}</p>
-              <p className="text-sm text-gray-400">Date: {expense.date}</p>
-              <p
-                className={`text-xl font-bold ${expense.type === 'expense' ? 'text-red-600' : 'text-green-600'}`}
+              {/* Total Balance */}
+              <div
+                  className={`mb-4 p-4 shadow rounded-lg ${totalBalance >= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}
               >
-                {formatAmount(expense.amount, expense.type)}
-             </p>
-
-              {/* Edit and Delete Buttons */}
-              <div className="mt-2 flex space-x-2">
-                <button
-                  className="btn btn-sm btn-outline btn-primary"
-                  onClick={() => handleEdit(expense)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn btn-sm btn-outline btn-danger"
-                  onClick={() => handleDelete(expense.id)}
-                >
-                  Delete
-                </button>
+                  <h2 className="text-xl font-bold">Total Balance: {formattedBalance}</h2>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+
+              {/* Button to open modal */}
+              <button className="btn btn-primary mb-4" onClick={openModal}>
+                  Add an Expense or Income
+              </button>
+
+              {/* Modal */}
+              {isModalOpen && (
+                  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50">
+                      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                          <h3 className="font-bold text-lg mb-4">
+                              {newExpense.id ? 'Edit Expense' : 'Add a New Expense'}
+                          </h3>
+                          <form onSubmit={handleFormSubmit}>
+                              <div className="form-control mb-4">
+                                  <label className="label">
+                                      <span className="label-text">Title</span>
+                                  </label>
+                                  <input
+                                      type="text"
+                                      name="title"
+                                      value={newExpense.title}
+                                      onChange={handleInputChange}
+                                      className="input input-bordered w-full"
+                                      required />
+                              </div>
+                              <div className="form-control mb-4">
+                                  <label className="label">
+                                      <span className="label-text">Description</span>
+                                  </label>
+                                  <textarea
+                                      name="description"
+                                      value={newExpense.description}
+                                      onChange={handleInputChange}
+                                      className="textarea textarea-bordered w-full"
+                                      required
+                                  ></textarea>
+                              </div>
+                              <div className="form-control mb-4">
+                                  <label className="label">
+                                      <span className="label-text">Amount</span>
+                                  </label>
+                                  <input
+                                      type="number"
+                                      name="amount"
+                                      value={newExpense.amount}
+                                      onChange={handleInputChange}
+                                      className="input input-bordered w-full"
+                                      required />
+                              </div>
+                              <div className="form-control mb-4">
+                                  <label className="label">
+                                      <span className="label-text">Category</span>
+                                  </label>
+                                  <input
+                                      type="text"
+                                      name="category"
+                                      value={newExpense.category}
+                                      onChange={handleInputChange}
+                                      className="input input-bordered w-full"
+                                      required />
+                              </div>
+                              <div className="form-control mb-4">
+                                  <label className="label">
+                                      <span className="label-text">Date</span>
+                                  </label>
+                                  <input
+                                      type="date"
+                                      name="date"
+                                      value={newExpense.date}
+                                      onChange={handleInputChange}
+                                      className="input input-bordered w-full"
+                                      required />
+                              </div>
+
+                              {/* Toggle for expense/income */}
+                              <div className="form-control mb-4">
+                                  <label className="label">
+                                      <span className="label-text">Type</span>
+                                  </label>
+                                  <div className="flex items-center">
+                                      <label className="label-text mr-2">Expense</label>
+                                      <input
+                                          type="checkbox"
+                                          checked={newExpense.type === 'income'}
+                                          onChange={handleToggleChange}
+                                          className="toggle" />
+                                      <label className="label-text ml-2">Income</label>
+                                  </div>
+                              </div>
+
+                              <div className="modal-action">
+                                  <button type="button" className="btn" onClick={closeModal}>
+                                      Cancel
+                                  </button>
+                                  <button type="submit" className="btn btn-primary">
+                                      {newExpense.id ? 'Update Expense' : 'Add Expense'}
+                                  </button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              )}
+
+              {/* Expense List */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {expenses.map((expense) => (
+                      <div key={expense.id} className="p-4 bg-white shadow rounded-lg">
+                          <h3 className="font-bold text-lg">{expense.title}</h3>
+                          <p className="text-sm text-gray-600">{expense.description}</p>
+                          <p className="text-sm text-gray-500">Category: {expense.category}</p>
+                          <p className="text-sm text-gray-400">Date: {expense.date}</p>
+                          <p
+                              className={`text-xl font-bold ${expense.type === 'expense' ? 'text-red-600' : 'text-green-600'}`}
+                          >
+                              {formatAmount(expense.amount, expense.type)}
+                          </p>
+
+                          {/* Edit and Delete Buttons */}
+                          <div className="mt-2 flex space-x-2">
+                              <button
+                                  className="btn btn-sm btn-outline btn-primary"
+                                  onClick={() => handleEdit(expense)}
+                              >
+                                  Edit
+                              </button>
+                              <button
+                                  className="btn btn-sm btn-outline btn-danger"
+                                  onClick={() => handleDelete(expense.id)}
+                              >
+                                  Delete
+                              </button>
+                          </div>
+                      </div>
+                  ))}
+              </div>
+          </div>
+      </div><Footer /></>
   );
 };
 
