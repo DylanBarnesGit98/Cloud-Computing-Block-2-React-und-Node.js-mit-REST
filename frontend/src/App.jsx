@@ -1,21 +1,12 @@
-import React, { useState } from 'react';
-import AddExpenseForm from './components/AddExpenseForm';
-import ExpenseList from './components/ExpenseList';
+import React from 'react';
+import ExpenseManager from './components/ExpenseManager';
 
-const App = () => {
-  const [expenses, setExpenses] = useState([]);
-
-  const addExpense = (newExpense) => {
-    setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
-  };
-
-  return (
-    <div>
-      <h1>PennyPlan - Personal Budget Manager</h1>
-      <AddExpenseForm onAddExpense={addExpense} />
-      <ExpenseList expenses={expenses} />
-    </div>
-  );
-};
+function App() {
+    return (
+        <div>
+            <ExpenseManager />
+        </div>
+    );
+}
 
 export default App;

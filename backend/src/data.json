@@ -1,0 +1,45 @@
+[
+    {
+      "title": "Groceries",
+      "description": "Bought some fruits and vegetables",
+      "amount": 50,
+      "category": "Food",
+      "date": "2024-11-29"
+    },
+    {
+        "title": "Groceries",
+        "description": "Bought some fruits and vegetables",
+        "amount": 50,
+        "category": "Food",
+        "date": "2024-11-29"
+      },
+      {
+        "title": "Groceries",
+        "description": "Bought some fruits and vegetables",
+        "amount": 50,
+        "category": "Food",
+        "date": "2024-11-29"
+      },
+      {
+        "title": "Groceries",
+        "description": "Bought some fruits and vegetables",
+        "amount": 50,
+        "category": "Food",
+        "date": "2024-11-29"
+      },
+      {
+        "title": "Groceries",
+        "description": "Bought some fruits and vegetables",
+        "amount": 50,
+        "category": "Food",
+        "date": "2024-11-29"
+      },
+      {
+        "title": "Groceries",
+        "description": "Bought some fruits and vegetables",
+        "amount": 50,
+        "category": "Food",
+        "date": "2024-11-29"
+      }
+  ]
+  
