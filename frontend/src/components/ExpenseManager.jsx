@@ -10,6 +10,7 @@ const ExpenseManager = () => {
     amount: '',
     category: '',
     date: '',
+    type: 'expense', // Default type is 'expense'
   });
 
   // Fetch expenses from the backend
@@ -30,19 +31,22 @@ const ExpenseManager = () => {
     setNewExpense((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Toggle the 'type' between 'expense' and 'income'
+  const handleToggleChange = () => {
+    setNewExpense((prev) => ({
+      ...prev,
+      type: prev.type === 'expense' ? 'income' : 'expense',
+    }));
+  };
+
   // Handle form submission
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const newExpenseToSave = {
-      ...newExpense,
-      amount: parseFloat(newExpense.amount), // Ensure amount is a number
-    };
-
     fetch('http://localhost:2000/data', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newExpenseToSave),
+      body: JSON.stringify(newExpense),
     })
       .then((response) => response.json())
       .then((addedExpense) => {
@@ -53,36 +57,38 @@ const ExpenseManager = () => {
           amount: '',
           category: '',
           date: '',
-        });
-        closeModal();
+          type: 'expense', // Reset to 'expense' by default
+        }); // Reset form
+        closeModal(); // Close modal
       })
       .catch((error) => console.error('Error adding expense:', error));
   };
 
-  // Calculate total balance
-  const totalBalance = expenses.reduce((total, expense) => total + parseFloat(expense.amount || 0), 0);
+  // Format amount based on type
+  const formatAmount = (amount, type) => {
+    const formattedAmount = parseFloat(amount).toFixed(2);
+    if (type === 'expense') {
+      return `- $${formattedAmount}`; // Add a negative sign for expense
+    }
+    return `$${formattedAmount}`; // For income, show the amount as is
+  };
 
-  // Format total balance with commas or dots
-  const formattedBalance = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(totalBalance);
+  // Calculate total balance
+  const totalBalance = expenses.reduce((total, expense) => {
+    if (expense.type === 'expense') {
+      return total - parseFloat(expense.amount || 0); // Subtract expenses
+    } else {
+      return total + parseFloat(expense.amount || 0); // Add income
+    }
+  }, 0);
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">Expense Manager</h1>
 
       {/* Total Balance */}
-      <div
-        className={`mb-4 p-4 shadow rounded-lg ${
-          totalBalance >= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-        }`}
-      >
-        <h2 className="text-xl font-bold">
-          Total Balance: {formattedBalance}
-        </h2>
+      <div className="mb-4 p-4 bg-white shadow rounded-lg">
+        <h2 className="text-xl font-bold">Total Balance: ${totalBalance.toFixed(2)}</h2>
       </div>
 
       {/* Button to open modal */}
@@ -160,12 +166,30 @@ const ExpenseManager = () => {
                   required
                 />
               </div>
+
+              {/* Toggle for expense/income */}
+              <div className="form-control mb-4">
+                <label className="label">
+                  <span className="label-text">Type</span>
+                </label>
+                <div className="flex items-center">
+                  <label className="label-text mr-2">Expense</label>
+                  <input
+                    type="checkbox"
+                    checked={newExpense.type === 'income'}
+                    onChange={handleToggleChange}
+                    className="toggle"
+                  />
+                  <label className="label-text ml-2">Income</label>
+                </div>
+              </div>
+
               <div className="modal-action">
                 <button type="button" className="btn" onClick={closeModal}>
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-primary">
-                  Add Expense
+                  Add {newExpense.type.charAt(0).toUpperCase() + newExpense.type.slice(1)}
                 </button>
               </div>
             </form>
@@ -176,7 +200,17 @@ const ExpenseManager = () => {
       {/* Expense List */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {expenses.map((expense, index) => (
-          <ExpenseListEntry key={index} expense={expense} />
+          <div key={index} className="p-4 bg-white shadow rounded-lg">
+            <h3 className="font-bold text-lg">{expense.title}</h3>
+            <p className="text-sm text-gray-600">{expense.description}</p>
+            <p className="text-sm text-gray-500">Category: {expense.category}</p>
+            <p className="text-sm text-gray-400">Date: {expense.date}</p>
+            <p
+              className={`text-xl font-bold ${expense.type === 'expense' ? 'text-red-600' : 'text-green-600'}`}
+            >
+              {formatAmount(expense.amount, expense.type)}
+            </p>
+          </div>
         ))}
       </div>
     </div>

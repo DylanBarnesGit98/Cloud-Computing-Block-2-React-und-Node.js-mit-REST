@@ -53,6 +53,39 @@
     "description": "cash",
     "amount": "2000000000",
     "category": "Drugs",
-    "date": "2024-11-14"
+    "date": "2024-11-14",
+    "type": "expense"
+  },
+  {
+    "title": "this is a test",
+    "description": "ttt",
+    "amount": "30",
+    "category": "truckms",
+    "date": "2024-11-29",
+    "type": "income"
+  },
+  {
+    "title": "ggg",
+    "description": "ggg",
+    "amount": "600",
+    "category": "csdguntr",
+    "date": "2024-11-01",
+    "type": "expense"
+  },
+  {
+    "title": "test",
+    "description": "tetasg",
+    "amount": "69420",
+    "category": "Bigg anti Stonkss",
+    "date": "2024-11-20",
+    "type": "expense"
+  },
+  {
+    "title": "gggg",
+    "description": "dfghdrg",
+    "amount": "666",
+    "category": "devils bussssniss",
+    "date": "2024-11-06",
+    "type": "income"
   }
 ]
